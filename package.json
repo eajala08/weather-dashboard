@@ -1,0 +1,12 @@
+{
+  "name": "weather-dashboard",
+  "version": "1.0.0",
+  "description": "A weather dashboard built with plain HTML, CSS and JavaScript on the Open-Meteo API.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "python3 -m http.server 5173",
+    "test": "node --test"
+  },
+  "license": "MIT"
+}
