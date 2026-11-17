@@ -6,6 +6,8 @@ Search any city and see the weather now, the next 24 hours on one chart, and
 the week ahead. The page changes from a daytime palette to a night one based
 on whether the sun is up in the city you are looking at.
 
+**Live demo: https://eajala08.github.io/weather-dashboard/**
+
 ![Daybreak showing the forecast for London at night](docs/screenshot.jpg)
 
 ## What it does
