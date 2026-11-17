@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en" data-sky="day">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Daybreak</title>
+    <meta name="description" content="A weather dashboard: conditions now, the next 24 hours on one chart, and the week ahead." />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23131a31'/%3E%3Ccircle cx='16' cy='20' r='7' fill='%23ffc23d'/%3E%3Crect y='20' width='32' height='12' fill='%23131a31'/%3E%3Crect x='5' y='20' width='22' height='2' rx='1' fill='%23eef1f8'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="src/app.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to the forecast</a>
+    <div class="page">
+      <header class="top">
+        <a class="wordmark" href="./">Daybreak</a>
+
+        <form class="search" id="search" role="search">
+          <label class="visually-hidden" for="city">Search for a city</label>
+          <input
+            id="city"
+            type="search"
+            placeholder="Search for a city"
+            autocomplete="off"
+            autocapitalize="words"
+            spellcheck="false"
+            role="combobox"
+            aria-expanded="false"
+            aria-controls="suggestions"
+            aria-autocomplete="list"
+          />
+          <ul class="suggestions" id="suggestions" role="listbox" aria-label="Matching cities" hidden></ul>
+        </form>
+
+        <button class="button locate" id="locate" type="button">Use my location</button>
+
+        <div class="units" id="units" role="group" aria-label="Units">
+          <button type="button" data-unit="F" aria-pressed="false">°F</button>
+          <button type="button" data-unit="C" aria-pressed="false">°C</button>
+        </div>
+      </header>
+
+      <nav class="recent" id="recent" aria-label="Recent cities" hidden><ul></ul></nav>
+      <p class="notice" id="notice" role="status"></p>
+
+      <main id="main" data-state="loading">
+        <p class="status" id="status" role="status"></p>
+
+        <section class="error" id="error" hidden>
+          <h2>No forecast to show</h2>
+          <p id="error-text"></p>
+          <button class="button" id="retry" type="button">Try again</button>
+        </section>
+
+        <div class="content" id="content" hidden>
+          <section class="now" aria-labelledby="place">
+            <div class="now-place">
+              <h1 id="place"></h1>
+              <p class="local-time" id="local-time"></p>
+            </div>
+            <p class="temp" id="temp"></p>
+            <div class="conditions">
+              <p class="condition" id="condition"></p>
+              <p class="summary" id="summary"></p>
+            </div>
+          </section>
+
+          <section class="hours" aria-labelledby="hours-title">
+            <div class="section-head">
+              <h2 id="hours-title">Next 24 hours</h2>
+              <p class="readout" id="readout" aria-live="polite"></p>
+            </div>
+            <div
+              class="chart"
+              id="chart"
+              tabindex="0"
+              role="group"
+              aria-label="Hourly chart. Use the left and right arrow keys to read each hour."
+            >
+              <svg role="img" aria-label="Temperature and chance of rain for the next 24 hours"></svg>
+            </div>
+            <ul class="legend">
+              <li><i class="key-temp"></i>Temperature</li>
+              <li><i class="key-rain"></i>Chance of rain or snow</li>
+              <li><i class="key-night"></i>Night</li>
+            </ul>
+          </section>
+
+          <div class="lower">
+            <section aria-labelledby="week-title">
+              <h2 id="week-title">This week</h2>
+              <ol class="days" id="days"></ol>
+            </section>
+            <section aria-labelledby="facts-title">
+              <h2 id="facts-title">Right now</h2>
+              <dl class="facts" id="facts"></dl>
+            </section>
+          </div>
+        </div>
+      </main>
+
+      <footer class="foot">
+        <p>
+          Forecast data from <a href="https://open-meteo.com/">Open-Meteo</a>.
+          <a href="https://github.com/eajala08/weather-dashboard">View the source on GitHub</a>.
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
